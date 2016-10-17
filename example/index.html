@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>finger</title>
+  <script src="../finger.js"></script>
+  <style>
+    #view{
+      width: 800px;
+      height: 800px;
+      border: 5px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div id="view"></div>
+</body>
+<script>
+
+  var el = document.getElementById('view');
+
+  var finger = new Finger(el);
+
+  finger.on('tap', function(e){
+    console.log('tap', e);
+  });
+
+  finger.on('tap2', function(e){
+    console.log('double tap', e);
+  });
+
+  finger.on('swipe', function(e){
+    console.log('swipe', e);
+  });
+
+  finger.on('pinch', function(e){
+    console.log('scale', e);
+    el.innerText = e.scale;
+  });
+
+  finger.on('rotate', function(){
+    console.log('rotate', e);
+  });
+</script>
+</html>
