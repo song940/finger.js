@@ -24,8 +24,8 @@ function Finger(el){
  * @return {[type]}   [description]
  */
 Finger.prototype.start = function(e){
-  this.trigger('start', e);
   this.a = e.touches;
+  this.trigger('start', e);
 };
 /**
  * [move description]
@@ -33,8 +33,9 @@ Finger.prototype.start = function(e){
  * @return {[type]}   [description]
  */
 Finger.prototype.move = function(e){
-  this.trigger('move', e);
+  e.preventDefault();
   this.b = e.touches;
+  this.trigger('move', e);
   if(this.b.length == 2){
     var x1 = this.b[0].pageX;
     var y1 = this.b[0].pageY;
@@ -56,8 +57,8 @@ Finger.prototype.move = function(e){
  * @return {[type]}   [description]
  */
 Finger.prototype.end = function(e){
-  this.trigger('end', e);
   this.c = e.changedTouches;
+  this.trigger('end', e);
   if(this.c.length == 1){
     var x1 = this.a[0].pageX;
     var y1 = this.a[0].pageY;
