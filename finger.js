@@ -1,17 +1,4 @@
 
-// switch(this.b.length){
-//   case 1:
-//     // tap
-//     // swipe
-//     // move
-//     break;
-//   case 2:
-//     // pinch
-//     // rotate
-//     break;
-// }
-
-
 /**
  * [Finger description]
  * @param {[type]} el [description]
