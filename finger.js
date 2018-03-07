@@ -67,13 +67,15 @@ Finger.prototype.end = function(e){
     var x3 = Math.abs(x1 - x2);
     var y3 = Math.abs(y1 - y2);
     // if 'a' eq 'c' then tap
-    // else if swipe
-    if(Math.abs(x3 - y3) < 10){
+    if(Math.abs(x3 - y3) < 10){ 
       this.trigger('tap')
-      if((+new Date - this.timestamp) < 250) // fast
+      if((+new Date - this.timestamp) < 250) { // fast
         this.trigger('tap2');
+      } else {
+        this.trigger('long-tap');
+      }
       this.timestamp = +new Date;
-    }else{
+    } else { // swipe
       var direction = x3 >= y3
         ? (x1 - x2 > 0 ? 'left' : 'right') 
         : (y1 - y2 > 0 ? 'up'   : 'down' );
@@ -113,3 +115,18 @@ Finger.prototype.trigger = function(type){
     }
   }
 };
+
+/**
+ * [expose wechat]
+ * @param  {[type]}
+ * @return {[type]}
+ */
+if (typeof define === 'function' && define.amd) {
+  define([], function() {
+    return Finger;
+  });
+} else if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Finger;
+} else {
+  window.Finger = Finger;
+}
